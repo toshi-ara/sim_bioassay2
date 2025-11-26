@@ -1,0 +1,25 @@
+{
+  "name": "sim_bioassay",
+  "version": "0.0.1",
+  "type": "module",
+  "description": "Simulator for Bioassay (lidocaine)",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "test": "vitest",
+    "tsc": "tsc"
+  },
+  "author": "Toshiaki Ara",
+  "license": "MIT license",
+  "devDependencies": {
+    "npm-check-updates": "^18.0.3",
+    "typescript": "^5.9.2",
+    "vite": "^7.1.4",
+    "vitest": "^3.2.4"
+  },
+  "dependencies": {
+    "chart.js": "^4.5.1",
+    "chartjs-plugin-annotation": "^3.1.0"
+  }
+}

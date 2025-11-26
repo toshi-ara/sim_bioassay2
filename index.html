@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simulator for Bioassay</title>
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+
+  <body>
+    <!-- Initial tab -->
+    <div id="initial">
+      <h1 id="initial-header">
+        Simulator of Bioassay
+      </h1>
+
+      <button class="initial" id="initial-exp-btn" style="display:block">
+        <span class="multilang" id="lang-initial-exp-btn">
+          Experiment
+        </span>
+      </button>
+      <button class="initial" id="initial-calc-btn" style="display:block">
+        <span class="multilang" id="lang-initial-calc-btn">
+          TD₅₀/LD₅₀ calculation
+        </span>
+      </button>
+      <button class="initial" id="initial-setting-btn" style="display:block">
+        <span class="multilang" id="lang-initial-setting-btn">
+          Settings
+        </span>
+      </button>
+      <select name="lang" id="initial-select-lang">
+        <option value="en">English</option>
+        <option value="ja">日本語 (Japanese)</option>
+        <!-- <option value="zh-TW">中文（繁体）</option> -->
+      </select>
+
+      <p id="version">
+        Version 0.0.1
+      </p>
+    </div>
+    <!-- End of Initial tab -->
+
+
+    <!-- Experiment tab -->
+    <div id="experiment">
+      <div class="container">
+        <div id="exp-left">
+          <!-- Input Table -->
+          <table class="exp-input-table" id="input-table">
+            <!-- Weight -->
+            <tr>
+              <td><span class="multilang" id="lang-exp-weight">Weight</span></td>
+              <td><span id="exp-weight"></span> g</td>
+            </tr>
+            <!-- Concentration -->
+            <tr>
+              <td>
+                <span for="exp-select-conc" class="multilang" id="lang-exp-conc">
+                  Concentration
+                </span>
+              </td>
+              <td>
+                <select name="exp-select-conc" id="exp-select-conc">
+                </select>
+              </td>
+            </tr>
+            <!-- Volume -->
+            <tr>
+              <td><span class="multilang" id="lang-exp-volume">Volume</span></td>
+              <td><input type="tel" id="exp-volume"> mL</td>
+            </tr>
+            <!-- Judgment time -->
+            <tr>
+              <td>
+                <span for="exp-select-time" class="multilang"
+                  id="lang-exp-selected-time">
+                  Judgment time
+                </span>
+              </td>
+              <td>
+                <select name="exp-select-time" id="exp-select-time">
+                  <option value="4">4</option>
+                  <option value="5" selected>5</option>
+                  <option value="6">6</option>
+                  <option value="7">7</option>
+                  <option value="8">8</option>
+                </select>
+                <span class="multilang" id="lang-exp-min">min</span></td>
+            </tr>
+          </table>
+          <!-- End of Input Table -->
+
+          <!-- Buttons -->
+          <button class="administration" id="exp-administration-btn">
+            <span class="multilang" id="lang-exp-administration-btn">
+              Administration
+            </span>
+          </button>
+
+          <div>
+            <span>
+              <button class="newexp" id="exp-newexp-btn">
+                <span class="multilang" id="lang-exp-newexp-btn">New Exp.</span>
+              </button>
+            </span>
+              <button class="back" id="exp-back-btn">
+                <span class="multilang" id="lang-exp-back-btn">Back</span>
+              </button>
+            <span>
+            </span>
+          </div>
+        </div>
+        <!-- End of exp-left -->
+
+        <!-- experiment-right -->
+        <div id="exp-right">
+          <!-- <div id="exp-administrated-area"> -->
+          <div id="exp-dose-time">
+            <span class="multilang" id="lang-exp-dose-time">
+              Dose (mg/kg) / Judgment Time
+            </span>
+          </div>
+          <!-- </div> -->
+          <div id="exp-reaction">
+            <span class="multilang" id="lang-exp-reaction">
+              (Reaction)
+            </span>
+          </div>
+          <video class="video-16x9" id="exp-video1" autoplay></video>
+          <video class="video-16x9" id="exp-video2" autoplay></video>
+        </div>
+        <!-- End of exp-right -->
+      </div>
+    </div>
+    <!-- End of Experiment tab -->
+
+
+    <!-- Calculation TD50/LD50 tab -->
+    <div id="calculation">
+      <h2>
+        TD₅₀/LD₅₀
+        <span class="multilang" id="lang-calc-header-btn">
+          calculation
+        </span>
+      </h2>
+
+      <table id="calc-input-table"></table>
+
+      <!-- Calculation buttons -->
+      <div>
+        <span>
+          <select name="calc-select-reaction" id="calc-select-reaction" disabled>
+            <option value="0">TD₅₀</option>
+            <option value="1">LD₅₀</option>
+          </select>
+        </span>
+        <span>
+          <button class="calc-d50-btn" id="calc-d50-btn">
+            <span class="multilang" id="lang-calc-d50-btn">
+              Calculation
+            </span>
+          </button>
+        </span>
+        <span>
+          <button class="back" id="calc-back-btn">
+            <span class="multilang" id="lang-calc-back-btn">
+              Back
+            </span>
+          </button>
+        </span>
+      </div>
+      <!-- End of Calculation buttons -->
+
+
+      <!-- Show results -->
+      <div id="calc-result-d50"></div>
+
+      <!-- Table and Plot area -->
+      <div id="calc-result-area">
+        <table id="calc-result-table"></table>
+        <canvas id="calc-result-plot"></canvas>
+      </div>
+    </div>
+    <!-- End of Calculation TD50/LD50 tab -->
+
+
+    <!-- Setting tab -->
+    <div id="setting">
+      <h2>
+        <span class="multilang" id="lang-settig-header">
+          Settings
+        </span>
+      </h2>
+
+      <!-- Select movie -->
+      <div>
+        <select name="movie" id="setting-select-movie">
+          <option value="1">
+            <span class="multilang" id="lang-setting-display-movie">
+              Display movie
+            </span>
+          </option>
+          <option value="0">
+            <span class="multilang" id="lang-setting-no-movie">
+              No movie
+            </span>
+          </option>
+        </select>
+      </div>
+
+      <!-- Select dose -->
+      <div class="setting-preset-box">
+        <div class="preset">
+          <label>
+            <input type="radio" name="setting-select-dose" value="0" checked>
+            <span class="multilang" id="lang-setting-preset1">
+              Preset1 (for TD₅₀)
+            </span>
+          </label>
+          <div class="dose" id="setting-dose0"></div>
+        </div>
+        <div class="preset">
+          <label>
+            <input type="radio" name="setting-select-dose" value="1">
+            <span class="multilang" id="lang-setting-preset2">
+              Preset2 (for LD₅₀)
+            </span>
+          </label>
+          <div class="dose" id="setting-dose1"></div>
+        </div>
+      </div>
+
+      <!-- Buttons -->
+      <div>
+        <span>
+          <button class="cancel" id="setting-cancel-btn">
+            <span class="multilang" id="lang-setting-cancel-btn">
+              Cancel
+            </span>
+          </button>
+        </span>
+        <span>
+          <button id="setting-change-btn">
+            <span class="multilang" id="lang-setting-change-btn">
+              Change
+            </span>
+          </button>
+        </span>
+      </div>
+    </div>
+    <!-- Setting tab -->
+
+    <script src="ts/main.ts" type="module"></script>
+  </body>
+</html>
+

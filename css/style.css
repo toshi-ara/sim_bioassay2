@@ -1,0 +1,220 @@
+body {
+    max-width: 1300px;
+    margin: 5px auto;
+    padding: 5px;
+    text-align: center;
+    background-color: mintcream;
+}
+
+
+h1 {
+    font-size: 28px;
+}
+
+h2 {
+    font-size: 24px;
+}
+
+#version {
+    margin-top: 20px;
+    margin-bottom: 10px;
+    font-size: 18px;
+    color: gray;
+}
+
+/* Initial tab */
+#initial-select-lang {
+    margin: 5px auto;
+    height: 1.8em;
+    font-size: 1em;
+}
+
+
+/* Experiment tab */
+.container {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    justify-content: center;
+}
+
+@media (max-width: 799px) {
+    .container {
+        flex-direction: column;
+        justify-content: center;
+    }
+}
+
+.exp-input-table {
+    margin: 10px auto;
+    padding: 10px;
+    background-color: white;
+    border: 1px solid gray;
+}
+
+#exp-select-conc {
+    width: 150px;
+    font-size: 1em;
+}
+
+#exp-volume {
+    width: 100px;
+    font-size: 1em;
+}
+
+#exp-select-time {
+    width: 50px;
+    font-size: 1em;
+}
+
+#exp-select-reaction {
+    width: 80px;
+    height: 40px;
+    font-size: 1em;
+}
+
+#exp-dose-time {
+    margin-top: 0px;
+    margin-bottom: 5px;
+    margin-left: 15px;
+    text-align: left;
+    font-size: 18px;
+    color: darkblue;
+}
+
+#exp-reaction {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    margin-left: 2em;
+    text-align: left;
+    font-size: 32px;
+}
+
+.video-16x9 {
+    width: 720px;;
+    max-width: 95%;
+    aspect-ratio: 16 / 9;
+    object-fit: cover;
+    margin: 5px 5px;
+    background-color: black;
+}
+
+
+/* Calculation tab */
+#calc-input-table {
+    max-width: 95%;
+    margin: 0 auto;
+    margin-bottom: 10px;
+    padding: 10px 10px;
+    background-color: #e0e0e0;
+}
+
+[id^="calc-total-"] {
+    width: 80px;
+    font-size: 21px;
+}
+
+[id^="calc-response-"] {
+    width: 80px;
+    font-size: 21px;
+}
+
+#calc-select-reaction {
+    width: 70px;
+}
+
+#calc-result-d50 {
+    margin: 20px auto;
+    font-size: 24px;
+}
+
+#calc-result-area {
+    margin: 10px auto;
+}
+
+#calc-result-table {
+    font-size: 18px;
+    margin: 20px auto;
+    padding: 10px;
+    background-color: white;
+}
+
+th, td {
+    line-height: 1.2;
+}
+
+#calc-result-plot {
+    width: 100%;
+    max-width: 500px;
+    margin: 10px auto;
+    padding: 5px;
+    background-color: white;
+}
+
+
+/* Setting tab */
+.setting-preset-box {
+    border: 1px solid #666;
+    margin: 10px auto;
+    padding: 15px;
+    max-width: 500px;
+    background-color: white;
+}
+
+.preset {
+    margin-bottom: 1.5ex
+}
+.preset:last-child {
+    margin-bottom: 0;
+}
+.preset label {
+    display: block;
+    text-align: left;
+    margin-bottom: 0.3ex;
+}
+.conc {
+    text-align: left;
+    margin-left: 1.5em;
+}
+
+
+select {
+    font-size: 21px;
+    width: 200px;
+    margin: 5px auto;
+}
+
+
+/* Buttons */
+button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    width: 150px;
+    height: 40px;
+    margin: 5px auto;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1em;
+}
+.initial {
+    width: 240px;
+}
+.administration {
+    width: 250px;
+}
+.newexp {
+    width: 120px;
+}
+.calc-d50-btn {
+    width: 160px;
+}
+.back {
+    width: 90px;
+    background-color: darkmagenta;
+}
+.cancel {
+    background-color: darkred;
+}
+
