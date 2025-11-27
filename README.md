@@ -116,10 +116,10 @@ npm run build
 
 
 ## ChangeLog
-### v1.0.1 (2025-11-25)
-- Change movie file to mp4
+### v0.0.2 (2025-11-27)
+- fix for iPhone
 
-### v1.0.0 (2025-11-23)
+### v0.0.1 (2025-11-27)
 - Initial release
 
 ## About this program

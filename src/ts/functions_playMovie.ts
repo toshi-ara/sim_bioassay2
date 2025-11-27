@@ -43,16 +43,33 @@ export function playMovie(reaction: number) {
     const index = Math.floor(Math.random() * movies.length);
     playlist2 = "./movie/" + movies[index];
 
-    elem.expVideo1.src = playlist1;
-    elem.expVideo1.style.display = "block";
-    elem.expVideo2.style.display = "none";
+    // initialization
+    const v1 = elem.expVideo1;
+    const v2 = elem.expVideo2;
 
-    // play next movie
-    elem.expVideo1.addEventListener("ended", () => {
-        elem.expVideo1.style.display = "none";
-        elem.expVideo2.style.display = "block";
-        elem.expVideo2.src = playlist2;
-        elem.expVideo2.play();
+    v1.src = playlist1;
+    v1.style.display = "block";
+    v2.style.display = "none";
+
+    // iOSで autoplay させるために muted が必須
+    v1.muted = true;
+    v2.muted = true;
+
+    // 次の動画のために ended を一度だけ登録
+    v1.onended = () => {
+        v1.style.display = "none";
+        v2.style.display = "block";
+        v2.src = playlist2;
+
+        // iPhoneで play() がブロックされないように async/await
+        v2.play().catch(err => {
+            console.log("Autoplay blocked:", err);
+        });
+    };
+
+    // ユーザー操作中に最初の動画再生（iOSではこれが必須）
+    v1.play().catch(err => {
+        console.log("Autoplay blocked:", err);
     });
 }
 
