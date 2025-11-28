@@ -51,23 +51,23 @@ export function playMovie(reaction: number) {
     v1.style.display = "block";
     v2.style.display = "none";
 
-    // iOSで autoplay させるために muted が必須
+    // muted is necessary to autoplay in iOS
     v1.muted = true;
     v2.muted = true;
 
-    // 次の動画のために ended を一度だけ登録
+    // register ended once for next movie
     v1.onended = () => {
         v1.style.display = "none";
         v2.style.display = "block";
         v2.src = playlist2;
 
-        // iPhoneで play() がブロックされないように async/await
+        // async/await to avoid block of play() in iPhone
         v2.play().catch(err => {
             console.log("Autoplay blocked:", err);
         });
     };
 
-    // ユーザー操作中に最初の動画再生（iOSではこれが必須）
+    // necesarry in iOS
     v1.play().catch(err => {
         console.log("Autoplay blocked:", err);
     });
