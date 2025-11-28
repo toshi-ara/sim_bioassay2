@@ -29,6 +29,7 @@ const moviesNo = [
 
 const playlist1 = "./movie/injection-animation.mp4";
 let playlist2: string;
+let isFirstMovie = false;
 
 
 export function playMovie(reaction: number) {
@@ -47,29 +48,39 @@ export function playMovie(reaction: number) {
     const v1 = elem.expVideo1;
     const v2 = elem.expVideo2;
 
-    v1.src = playlist1;
-    v1.style.display = "block";
-    v2.style.display = "none";
-
     // muted is necessary to autoplay in iOS
     v1.muted = true;
     v2.muted = true;
 
-    // register ended once for next movie
-    v1.onended = () => {
+    if (isFirstMovie) {
+        v1.src = playlist1;
+        v1.style.display = "block";
+        v2.style.display = "none";
+
+        // register ended once for next movie
+        v1.onended = () => {
+            v1.style.display = "none";
+            v2.style.display = "block";
+            v2.src = playlist2;
+
+            // async/await to avoid block of play() in iPhone
+            v2.play().catch(err => {
+                console.log("Autoplay blocked:", err);
+            });
+        };
+
+        // necesarry in iOS
+        v1.play().catch(err => {
+            console.log("Autoplay blocked:", err);
+        });
+    } else {
+        v2.src = playlist2;
         v1.style.display = "none";
         v2.style.display = "block";
-        v2.src = playlist2;
 
-        // async/await to avoid block of play() in iPhone
         v2.play().catch(err => {
             console.log("Autoplay blocked:", err);
         });
-    };
-
-    // necesarry in iOS
-    v1.play().catch(err => {
-        console.log("Autoplay blocked:", err);
-    });
+    }
 }
 
